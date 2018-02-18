@@ -1,7 +1,7 @@
 /*console.log("Hello World"); */
 
-/*
 
+/*
  
 
 const flatten=require('array-flatten');
@@ -10,10 +10,11 @@ var myArr= [
     ["good","bye"]
 
 ];
+
 */
+/* run it using node index.js*/
 
 /*
-// run it using node index.js
 //create server object:
 const http= require('http');
 
@@ -85,3 +86,27 @@ app.get('/goodbye', function (req, res) {
 
 app.listen(8080);
 */
+
+
+/*
+var express = require('Express');
+var app = express();
+
+var things = require('./things.js');
+
+//both index.js and things.js should be in same directory
+app.use('/things', things);
+
+app.listen(8080);
+
+*/
+
+//Dynamic routes
+var express= require('express');
+var app= express();
+
+app.get('/:id', function(req,res){
+	res.send('the id requested is :' + req.params.id);
+});
+
+app.listen(8080);
