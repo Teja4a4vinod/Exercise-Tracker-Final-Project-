@@ -10,8 +10,10 @@ var myArr= [
     ["good","bye"]
 
 ];
-/* run it using node index.js*/
+*/
 
+/*
+// run it using node index.js
 //create server object:
 const http= require('http');
 
@@ -21,6 +23,8 @@ const server= http.createServer(function (req, res) {
 });
 server.listen(8080);
 console.log("Listensing on http://localhost:8080");
+*/
+
 
 
 /*
@@ -36,7 +40,9 @@ app.get('/', function (req, res) {
 app.listen(8080);
 */
 
-/*//one more example
+
+/*
+//one more example
 
 //Express routing example
 var express = require('express')
@@ -53,9 +59,12 @@ app.get('/goodbye', function (req, res) {
   })
 
 app.listen(8080);
-
 */
 
+
+
+
+/*
 var express = require('express')
 var app = express()
 
@@ -75,3 +84,4 @@ app.get('/goodbye', function (req, res) {
   });
 
 app.listen(8080);
+*/
