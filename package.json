@@ -1,19 +1,22 @@
 {
-  "name": "v8.9.4-win-x64",
+  "name": "exercise-tracker-final-project-",
   "version": "1.0.0",
-  "description": "<p align=\"center\">\r   <a href=\"https://nodejs.org/\">\r     <img alt=\"Node.js\" src=\"https://nodejs.org/static/images/logo-light.svg\" width=\"400\"/>\r   </a>\r </p>\r <p align=\"center\">\r   <a title=\"CII Best Practices\" href=\"https://bestpractices.coreinfrastructure.org/projects/29\"><img src=\"https://bestpractices.coreinfrastructure.org/projects/29/badge\"></a>\r </p>",
+  "description": "This website is to track exercise activities and it also allows the users to share their activities with their friends",
   "main": "index.js",
-  "dependencies": {
-    "npm": "^1.0.0",
-    "bootstrap" :"^4.0.0",
-	  "express" :"^4.16.2",
-	  "jquery" :"^3.3.1",
-	  "popper.js" :"^1.12.9"
-  },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Teja4a4vinod/Exercise-Tracker-Final-Project-.git"
+  },
+  "keywords": [
+    "exercise"
+  ],
+  "author": "Tejaswini Utlapalli",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Teja4a4vinod/Exercise-Tracker-Final-Project-/issues"
+  },
+  "homepage": "https://github.com/Teja4a4vinod/Exercise-Tracker-Final-Project-#readme"
 }
