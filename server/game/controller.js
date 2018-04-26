@@ -1,12 +1,18 @@
 var express = require('express');
-var Game = require('./model');
+var Exercise = require('./model');
 
 var app = express.Router();
 
 
-var game = new Game();
+var Exercise = new Exercise();
 
 module.exports = app
-    .get('/quotes', (req, res) => res.send( game.GetQuotes() ) )
-    .get('/state', (req, res) => res.send(game) )
-    .post('/picture', (req, res) => res.send( game.FlipPicture() ) )
+    .get('/activities', (req, res) => res.send( Exercise.GetActivities() ) )
+    .get('/state', (req, res) => res.send(Exercise) )
+    .get('/users', (req, res) => res.send( Exercise.GetUsers(req.query.userId)))
+    .get('/workouts', (req, res) => res.send( Exercise.DisplayActivities()))
+    .post('/activities', (req, res) => {
+        res.send( Exercise.SubmitActivity(req.body.Text, req.body.UserId))
+
+        console.log(req.body)
+    })

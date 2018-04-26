@@ -132,24 +132,29 @@ var app = express()
 const servername = "localhost";
 const port = 8080;*/
 
-var express = require('express')
+const express = require('express')
+const path = require('path');
+const bodyParser = require('body-parser');
+
 var app = express()
 
 const servername = "localhost";
 const port = 8080;
 
 const simple = require('./simpleController');
-const game = require('./game/controller');
+const exercise = require('./game/controller');
 
 
 app
+    .use(bodyParser.json())
+    .use(bodyParser.urlencoded({ extended: false }))
     .use('/', (req, res, next) => {
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "*");
-        next();      
+        next();   
     })
     .use('/simple', simple)
-    .use('/game', game)
+    .use('/exercise', exercise)
     .listen(port);
 
 console.log("running on http://" + servername + ":" + port)
