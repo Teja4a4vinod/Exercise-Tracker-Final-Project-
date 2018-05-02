@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Exercise, User, Workout, Notification } from '../../model/exercise';
+import { HttpService } from '../../services/http.service';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-workouts',
@@ -7,19 +10,61 @@ import { Exercise, User, Workout, Notification } from '../../model/exercise';
   styleUrls: ['./workouts.component.css']
 })
 export class WorkoutsComponent implements OnInit {
-
-
-  Model = new Exercise();
-  Me: User;
-
-  constructor() { }
+  private activities: any;
+  private workouts: any;
+  private isOpen: Boolean = false;
+  private activity: String = '';
+  constructor(private httpClient: HttpService, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
+    if (this.authService.getAuth() === 'true') {
+      this.getActivities(this.authService.getUser());
+      this.getWorkouts();
+    } else {
+      this.router.navigate(['login']);
+    }
   }
-
-  submitActivity(e: MouseEvent, text: string){
-    e.preventDefault();
-  this.Model.Activities.push({Workout:text, UserId: this.Me.UserName, Name:this.Me.UserName})
-
+  edit(item: any, index: any) {
+    this.workouts[index].show = true;
+  }
+  cancel(index: any) {
+    this.activity = '';
+    this.workouts[index].show = false;
+  }
+  post(item: any, index: any) {
+    const user = this.authService.getUser();
+    const reqObj = {
+      uri: '/activity',
+      body: { activity: item, email: user, value: this.activity }
+    };
+    this.httpClient.post(reqObj)
+      .subscribe(data => {
+        if (data.status) {
+          this.workouts[index].show = false;
+          this.activity = '';
+          this.getActivities(this.authService.getUser());
+        }
+      });
+  }
+  getWorkouts() {
+    const worObj = {
+      uri: '/workouts',
+    };
+    this.httpClient.get(worObj)
+      .subscribe(workouts => {
+        this.workouts = workouts;
+        for (let i = 0; i < this.workouts.length; i++) {
+          this.workouts[i].show = false;
+        }
+      });
+  }
+  getActivities(email: string) {
+    const actObj = {
+      uri: `/activities?email=${email}`,
+    };
+    this.httpClient.get(actObj)
+      .subscribe(activities => {
+        this.activities = activities;
+      });
   }
 }

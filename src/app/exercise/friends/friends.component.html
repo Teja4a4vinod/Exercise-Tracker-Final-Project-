@@ -1,3 +1,25 @@
-<p>
-  friends works!
-</p>
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let friend of friends; let i = index">
+        <th scope="row">{{i+1}}</th>
+        <td>{{friend.email}}<span class="dot" *ngIf="friend.isLogin"></span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="card" >
+    <div class="card-header">List of friends</div>
+    <ul class="list-group list-group-flush">
+        <li *ngFor="let friend of friends; let i = index" class="list-group-item">
+          <p class="card-text" >{{friend.username}}<span class="dot" *ngIf="friend.isLogin"></span></p>
+          <a href="#" class="btn btn-primary">Profile</a>
+            
+        </li>
+    </ul>
+</div>

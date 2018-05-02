@@ -1,3 +1,47 @@
-<p>
-  workouts works!
-</p>
+<div class="row">
+  <div class="col">
+      <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Activity</th>
+              <th scope="col">User</th>
+              <th scope="col">Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of activities; let i = index">
+              <th scope="row">{{i+1}}</th>
+              <td>{{item.activity}}</td>
+              <td>{{item.email}}</td>
+              <td>{{item.value}}</td>
+            </tr>
+          </tbody>
+        </table>
+  </div>
+  <div class="col">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Workout</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of workouts; let i = index">
+          <th scope="row">{{i+1}}</th>
+          <td (click)="edit(item.type,i)" *ngIf="!item.show">{{item.type}}</td><div *ngIf="item.show">
+              <div class="input-group">
+                <input type="text" class="form-control" [(ngModel)]="activity">
+                  <span class="input-group-btn">
+                  <button class="btn btn-secondary" type="button" (click)="post(item.type,i)" style="margin-right: 10px;">Post</button>
+                  <button class="btn btn-secondary" type="button" (click)="cancel(i)">Cancel</button>
+                </span>
+              </div>
+            </div>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

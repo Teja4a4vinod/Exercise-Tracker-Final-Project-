@@ -12,7 +12,14 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { NotificationsComponent } from './exercise/notifications/notifications.component';
 import { ExerciseComponent } from './exercise/exercise.component';
-
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpService } from './services/http.service';
+import { HttpModule } from '@angular/http';
+import { AuthService } from './services/auth.service';
+import { PopoverComponent } from './popover/popover.component';
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToasterModule } from 'angular2-toaster/src/toaster.module';
 
 @NgModule({
   declarations: [
@@ -25,21 +32,27 @@ import { ExerciseComponent } from './exercise/exercise.component';
     SignupComponent,
     LoginComponent,
     NotificationsComponent,
-    ExerciseComponent
+    ExerciseComponent,
+    PopoverComponent
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpModule,
+    BrowserAnimationsModule,
+    ToasterModule.forRoot(),
     RouterModule.forRoot([
-        { path: 'home', component: HomeComponent },
-        { path: 'workouts', component: WorkoutsComponent },
-        { path: 'friends', component: FriendsComponent },
-        { path: 'signup', component: SignupComponent },
-        { path: 'login', component: LoginComponent },
-        { path: 'notifications', component: NotificationsComponent },
-        { path: '', redirectTo: '/home', pathMatch: 'full'}
+      { path: 'home', component: HomeComponent },
+      { path: 'workouts', component: WorkoutsComponent },
+      { path: 'friends', component: FriendsComponent },
+      { path: 'signup', component: SignupComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'notifications', component: NotificationsComponent },
+      { path: '', redirectTo: '/home', pathMatch: 'full' }
     ])
   ],
-  providers: [],
+  providers: [HttpService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
