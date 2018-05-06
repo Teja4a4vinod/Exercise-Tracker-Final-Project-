@@ -18,11 +18,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.authService.getAuth() === 'true') {
+    if (this.authService.getAuth()) {
       this.router.navigate(['friends']);
-    } else {
-      this.router.navigate(['login']);
-    }
+    } 
   }
   login(form: any) {
     const reqObj = {

@@ -12,13 +12,13 @@ export class AuthService {
     localStorage.setItem('authToken', 'true');
   }
   removeAuth() {
-    localStorage.setItem('authToken', 'false');
+    localStorage.removeItem('authToken');
   }
   getUser() {
     return localStorage.getItem('user');
   }
   removeUser() {
-    localStorage.setItem('user', '');
+    localStorage.removeItem('user');
   }
   setUser(user: string) {
     localStorage.setItem('user', user);

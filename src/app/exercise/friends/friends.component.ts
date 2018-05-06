@@ -10,20 +10,51 @@ import { AuthService } from '../../services/auth.service';
 })
 export class FriendsComponent implements OnInit {
   private friends: any;
+  private activities: any;
+  private click: boolean;
+  private showHide: any;
+
   constructor(private httpClient: HttpService, private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
 
-    if (this.authService.getAuth() === 'true') {
+    if (this.authService.getAuth()) {
       const reqObj = {
         uri: '/friends',
       };
       this.httpClient.get(reqObj)
         .subscribe(friends => {
+          for (let i = 0; i < friends.length; i++) {
+            friends[i].isOpen = false;
+          }
           this.friends = friends;
         });
-    } else {
+    }
+    else {
       this.router.navigate(['login']);
     }
+  }
+  getActivities(friend:any, index: number) {
+    let url;
+    if(this.authService.getUser()===friend.email){
+      url=`/activities?email=${friend.email}`;
+    }else{
+      let isPrivate=false;
+      url=`/activities?email=${friend.email}&isPrivate=${isPrivate}`
+    }
+    const actObj = {
+      uri: url,
+    };
+    for (let i = 0; i < this.friends.length; i++) {
+      this.friends[i].isOpen = false;
+    }
+    this.httpClient.get(actObj)
+      .subscribe(activities => {
+        if (activities.length > 0) {
+          this.activities = activities;
+          this.friends[index].isOpen = true;
+          this.showHide = !this.showHide;
+        }
+      });
   }
 }

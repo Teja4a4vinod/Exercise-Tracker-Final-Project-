@@ -1,4 +1,4 @@
-<table class="table table-hover">
+<!-- <table class="table table-hover">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -11,15 +11,15 @@
         <td>{{friend.email}}<span class="dot" *ngIf="friend.isLogin"></span></td>
       </tr>
     </tbody>
-  </table>
+  </table> -->
 
-  <div class="card" >
-    <div class="card-header">List of friends</div>
-    <ul class="list-group list-group-flush">
-        <li *ngFor="let friend of friends; let i = index" class="list-group-item">
-          <p class="card-text" >{{friend.username}}<span class="dot" *ngIf="friend.isLogin"></span></p>
-          <a href="#" class="btn btn-primary">Profile</a>
-            
-        </li>
-    </ul>
+<div class="container" style="text-center">
+  <div *ngFor="let friend of friends; let i = index">
+    <button class="btn btn-primary btn-custom" (click)="getActivities(friend,i)" data-toggle="collapse" [attr.data-target]="'#card-'+i">{{friend.username}}<span class="dot" *ngIf="friend.isLogin"></span></button>
+    <div id="{{'card-'+i}}" class="collapse btn-custom custom" [class.in]="friend.isOpen===true"  *ngIf="friend.isOpen && showHide ">
+      <div *ngFor="let activity of activities;">
+          {{activity.activity}} {{activity.value}} <i>CreatedAt</i> {{activity.createdAt}}
+      </div>
+    </div>
+  </div>
 </div>

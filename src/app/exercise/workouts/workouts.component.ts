@@ -13,6 +13,7 @@ export class WorkoutsComponent implements OnInit {
   private activities: any;
   private workouts: any;
   private isOpen: Boolean = false;
+  private isPrivate: Boolean = false;
   private activity: String = '';
   constructor(private httpClient: HttpService, private authService: AuthService, private router: Router) { }
 
@@ -35,7 +36,7 @@ export class WorkoutsComponent implements OnInit {
     const user = this.authService.getUser();
     const reqObj = {
       uri: '/activity',
-      body: { activity: item, email: user, value: this.activity }
+      body: { activity: item, email: user, value: this.activity,isPrivate:this.isPrivate }
     };
     this.httpClient.post(reqObj)
       .subscribe(data => {
@@ -64,6 +65,9 @@ export class WorkoutsComponent implements OnInit {
     };
     this.httpClient.get(actObj)
       .subscribe(activities => {
+        for (let i = 0; i < activities.length; i++) {
+          activities[i].isOpen = false;
+        }
         this.activities = activities;
       });
   }

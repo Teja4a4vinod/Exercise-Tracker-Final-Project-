@@ -8,3 +8,8 @@
   padding: 1em;
   border: solid;
 }
+.check{
+  height: 13px;
+  width: 13px;
+  margin-top: 14px;
+}

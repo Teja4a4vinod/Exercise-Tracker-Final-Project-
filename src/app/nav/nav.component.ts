@@ -13,11 +13,14 @@ export class NavComponent implements OnInit {
   constructor(private router: Router, private authService: AuthService, private httpClient: HttpService) { }
 
   ngOnInit() {
-    this.authToken = this.authService.getAuth();
+    if(!this.authService.getAuth()){
+      this.router.navigate(['login']);
+    }
   }
+
   logout(): any {
     const reqObj = {
-      body: {email:this.authService.getUser()},
+      body: { email: this.authService.getUser() },
       uri: '/logout',
     };
     this.httpClient.post(reqObj)
@@ -32,10 +35,10 @@ export class NavComponent implements OnInit {
 
   }
   checkAuth() {
-    if (this.authService.getAuth() === 'false') {
-      return false;
-    } else {
+    if (this.authService.getAuth()) {
       return true;
+    } else {
+      return false;
     }
   }
 }

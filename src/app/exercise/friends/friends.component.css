@@ -6,3 +6,18 @@
   display: inline-block;
   position: absolute;
 }
+
+.col-centered{
+  float: none;
+  margin: 0 auto;
+}
+
+.btn-custom{
+  width: 50%;
+    background-color:#e5f4b5 !important;
+}
+.custom{
+  width:50% !important;
+  text-align: center !important;
+  border-radius: 2px !important;
+}

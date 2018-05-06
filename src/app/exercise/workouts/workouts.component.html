@@ -7,6 +7,7 @@
               <th scope="col">Activity</th>
               <th scope="col">User</th>
               <th scope="col">Value</th>
+              <th scope="col">CreatedAt</th>
             </tr>
           </thead>
           <tbody>
@@ -15,6 +16,7 @@
               <td>{{item.activity}}</td>
               <td>{{item.email}}</td>
               <td>{{item.value}}</td>
+              <td>{{item.createdAt}}</td>
             </tr>
           </tbody>
         </table>
@@ -32,8 +34,9 @@
           <th scope="row">{{i+1}}</th>
           <td (click)="edit(item.type,i)" *ngIf="!item.show">{{item.type}}</td><div *ngIf="item.show">
               <div class="input-group">
-                <input type="text" class="form-control" [(ngModel)]="activity">
-                  <span class="input-group-btn">
+                <input type="text" class="form-control" [(ngModel)]="activity" style="width: 85%;">
+                <span class="input-group-btn">
+                  <input type="checkbox" class="form-control check" [(ngModel)]="isPrivate" *ngIf="item.show">
                   <button class="btn btn-secondary" type="button" (click)="post(item.type,i)" style="margin-right: 10px;">Post</button>
                   <button class="btn btn-secondary" type="button" (click)="cancel(i)">Cancel</button>
                 </span>
