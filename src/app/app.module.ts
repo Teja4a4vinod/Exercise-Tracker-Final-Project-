@@ -53,7 +53,7 @@ import { NotificationsService } from './services/notifications.service';
       { path: '', redirectTo: '/home', pathMatch: 'full' }
     ])
   ],
-  providers: [HttpService, AuthService, NotificationsService],
+  providers: [HttpService, AuthService, NotificationsService, MessagesComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
