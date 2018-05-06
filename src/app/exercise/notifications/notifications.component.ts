@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { NotificationsService } from '../../services/notifications.service';
+import { HttpService } from '../../services/http.service';
 
 @Component({
   selector: 'app-notifications',
@@ -9,7 +11,10 @@ import { Router } from '@angular/router';
 })
 export class NotificationsComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private httpClient: HttpService,
+              private authService: AuthService,
+              private router: Router,
+              private _Messages: NotificationsService) { }
 
   ngOnInit() {
     if (!this.authService.getAuth()) {

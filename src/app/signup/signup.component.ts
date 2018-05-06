@@ -4,6 +4,7 @@ import { HttpService } from '../services/http.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { ToasterModule, ToasterService, ToasterConfig } from 'angular2-toaster';
+import { NotificationsService } from '../services/notifications.service';
 
 @Component({
   selector: 'app-signup',
@@ -17,7 +18,11 @@ export class SignupComponent implements OnInit {
     animation: 'fade'
   });
 
-  constructor(private toasterService: ToasterService, private httpClient: HttpService, private router: Router, private authService: AuthService) {
+  constructor(private toasterService: ToasterService, 
+              private httpClient: HttpService, 
+              private router: Router, 
+              private authService: AuthService,
+            private _Messages: NotificationsService) {
     this.toasterService = toasterService;
     this.signupForm = new FormGroup({
       email: new FormControl(),
@@ -39,6 +44,7 @@ export class SignupComponent implements OnInit {
         .subscribe(data => {
           if (data.status) {
             this.router.navigate(['login']);
+            this._Messages.Messages.push({ Text:'WELCOME to Exercise Tracker Application ' +reqObj.body.username, Type: 'success'})
           }
         });
     } else {

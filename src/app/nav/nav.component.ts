@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { HttpService } from '../services/http.service';
+import { NotificationsService } from '../services/notifications.service';
 
 @Component({
   selector: 'app-nav',
@@ -10,7 +11,10 @@ import { HttpService } from '../services/http.service';
 })
 export class NavComponent implements OnInit {
   private authToken: any;
-  constructor(private router: Router, private authService: AuthService, private httpClient: HttpService) { }
+  constructor(private router: Router, 
+    private authService: AuthService, 
+    private httpClient: HttpService,
+    private _Messages: NotificationsService) { }
 
   ngOnInit() {
     if(!this.authService.getAuth()){
@@ -23,6 +27,7 @@ export class NavComponent implements OnInit {
       body: { email: this.authService.getUser() },
       uri: '/logout',
     };
+    this._Messages.Messages.push({ Text: this.authService.getUser() +' is now logged out from the application' , Type: 'success'})
     this.httpClient.post(reqObj)
       .subscribe(data => {
         if (data.status) {

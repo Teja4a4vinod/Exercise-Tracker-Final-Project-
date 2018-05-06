@@ -3,6 +3,7 @@ import { Exercise, User, Workout, Notification } from '../../model/exercise';
 import { HttpService } from '../../services/http.service';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { NotificationsService } from '../../services/notifications.service';
 
 @Component({
   selector: 'app-workouts',
@@ -15,7 +16,10 @@ export class WorkoutsComponent implements OnInit {
   private isOpen: Boolean = false;
   private isPrivate: Boolean = false;
   private activity: String = '';
-  constructor(private httpClient: HttpService, private authService: AuthService, private router: Router) { }
+  constructor(private httpClient: HttpService, 
+              private authService: AuthService,
+              private router: Router,
+              private _Messages: NotificationsService) { }
 
   ngOnInit() {
     if (this.authService.getAuth() === 'true') {
@@ -46,6 +50,7 @@ export class WorkoutsComponent implements OnInit {
           this.getActivities(this.authService.getUser());
         }
       });
+      this._Messages.Messages.push({ Text: 'New activity is posted by ' +user, Type: 'success'})
   }
   getWorkouts() {
     const worObj = {
@@ -56,6 +61,7 @@ export class WorkoutsComponent implements OnInit {
         this.workouts = workouts;
         for (let i = 0; i < this.workouts.length; i++) {
           this.workouts[i].show = false;
+          
         }
       });
   }
@@ -69,6 +75,8 @@ export class WorkoutsComponent implements OnInit {
           activities[i].isOpen = false;
         }
         this.activities = activities;
+        
       });
+      
   }
 }

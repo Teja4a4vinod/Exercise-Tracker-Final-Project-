@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NotificationsService } from '../services/notifications.service';
 
 @Component({
   selector: 'app-messages',
@@ -7,12 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessagesComponent implements OnInit {
 
-    Messages: string[];
-  constructor() {
-      this.Messages = ['You can now choose your own pictures.'];
+  constructor( public Messages: NotificationsService ) {
   }
 
   ngOnInit() {
+  }
+
+  delete(i: number){
+      this.Messages.Messages.splice(i, 1);
   }
 
 }

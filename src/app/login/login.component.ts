@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { HttpService } from '../services/http.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { NotificationsService } from '../services/notifications.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,8 +11,12 @@ import { AuthService } from '../services/auth.service';
 })
 export class LoginComponent implements OnInit {
   private loginForm: any;
-  constructor(private httpClient: HttpService, private router: Router, private authService: AuthService) {
-    this.loginForm = new FormGroup({
+  constructor(private httpClient: HttpService,
+              private router: Router, 
+              private authService: AuthService,
+              private _Messages: NotificationsService) {
+      this.loginForm = new FormGroup({
+      userName: new FormControl(),
       email: new FormControl(),
       password: new FormControl()
     });
@@ -33,6 +38,7 @@ export class LoginComponent implements OnInit {
           this.authService.setAuth();
           this.authService.setUser(form.value.email);
           this.router.navigate(['friends']);
+          this._Messages.Messages.push({ Text: form.value.email +' is now logged into the application' , Type: 'success'})
         }
       },err=>console.log(err));
   }

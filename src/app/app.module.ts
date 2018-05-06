@@ -20,6 +20,7 @@ import { PopoverComponent } from './popover/popover.component';
 import {ToastModule} from 'ng2-toastr/ng2-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToasterModule } from 'angular2-toaster/src/toaster.module';
+import { NotificationsService } from './services/notifications.service';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,7 @@ import { ToasterModule } from 'angular2-toaster/src/toaster.module';
       { path: '', redirectTo: '/home', pathMatch: 'full' }
     ])
   ],
-  providers: [HttpService, AuthService],
+  providers: [HttpService, AuthService, NotificationsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
