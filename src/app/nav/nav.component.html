@@ -14,6 +14,10 @@
       <li><a class="nav-link" routerLink="/login" routerLinkActive="active" *ngIf="!checkAuth()"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       <li><a class="nav-link" style="cursor: pointer" (click)="logout()" routerLinkActive="active" *ngIf="checkAuth()" ><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
     </ul>
+    <div class="navbar-text pull-right" *ngIf="checkAuth()">
+       {{checkUser()}} <span class="dot"></span>
+    </div>
+
   </div>
 </nav>
 

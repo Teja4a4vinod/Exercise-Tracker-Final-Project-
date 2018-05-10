@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Exercise, User, Workout, Notification } from '../../model/exercise';
 import { HttpService } from '../../services/http.service';
-import { AuthService } from '../../services/auth.service';
+import { CustomAuthService } from '../../services/custom.auth.service';
 import { Router } from '@angular/router';
 import { NotificationsService } from '../../services/notifications.service';
 
@@ -17,7 +16,7 @@ export class WorkoutsComponent implements OnInit {
   private isPrivate: Boolean = false;
   private activity: String = '';
   constructor(private httpClient: HttpService, 
-              private authService: AuthService,
+              private authService: CustomAuthService,
               private router: Router,
               private _Messages: NotificationsService) { }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
+import { CustomAuthService } from '../../services/custom.auth.service';
 import { Router } from '@angular/router';
 import { NotificationsService } from '../../services/notifications.service';
 import { HttpService } from '../../services/http.service';
@@ -12,7 +12,7 @@ import { HttpService } from '../../services/http.service';
 export class NotificationsComponent implements OnInit {
 
   constructor(private httpClient: HttpService,
-              private authService: AuthService,
+              private authService: CustomAuthService,
               private router: Router,
               private _Messages: NotificationsService) { }
 

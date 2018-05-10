@@ -141,9 +141,6 @@ var app = express()
 const servername = "localhost";
 const port = 8080;
 
-const simple = require('./simpleController');
-const exercise = require('./game/controller');
-
 
 app
     .use(bodyParser.json())
@@ -153,8 +150,7 @@ app
         res.header("Access-Control-Allow-Headers", "*");
         next();
     })
-    .use('/simple', simple)
-    .use('/exercise', exercise)
+    
     .use('/', require('./routes/index'))
     .listen(port);
 
