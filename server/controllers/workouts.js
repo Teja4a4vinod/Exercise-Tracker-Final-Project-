@@ -4,7 +4,7 @@ const moment = require('moment');
 
 class Workouts {
   constructor() {
-    this.Workouts = [{ type: 'Running' }, { type: 'Jogging' }, { type: 'Pushups' }];
+    this.Workouts = [{ type: 'Running' }, { type: 'Jogging' }, { type: 'Pushups' },{type: 'Walking'},{type: 'Swimming'},{type: 'Jumping'},{type: 'Skipping'}];
     this.actitivities = [];
   }
   FetchAllWorkouts() {
@@ -31,7 +31,7 @@ class Workouts {
     if (typeof req.body == 'string') {
       JSON.parse(req.body)
     }
-    req.body.createdAt=moment().format("HH:mm:ss");;
+    req.body.createdAt=moment().format('MMMM Do YYYY, h:mm:ss a');;
 
     this.actitivities.push(req.body);
     return ({ status: true, message: 'Activity added successfully' })

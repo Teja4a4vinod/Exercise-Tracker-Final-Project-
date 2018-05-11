@@ -1,6 +1,6 @@
 .dot {
-  height: 8px;
-  width: 8px;
+  height: 10px;
+  width: 10px;
   background-color: green;
   border-radius: 50%;
   display: inline-block;
@@ -13,11 +13,16 @@
 }
 
 .btn-custom{
-  width: 50%;
-    background-color:#e5f4b5 !important;
+    width: 50%;
+    background-color:white !important;
+    
 }
 .custom{
   width:50% !important;
   text-align: center !important;
   border-radius: 2px !important;
+}
+
+.list-group{
+  text-align:center;
 }

@@ -1,50 +1,38 @@
+<div class="container">
 <div class="row">
-  <div class="col">
-      <table class="table table-hover">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Activity</th>
-              <th scope="col">User</th>
-              <th scope="col">Value</th>
-              <th scope="col">CreatedAt</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let item of activities; let i = index">
-              <th scope="row">{{i+1}}</th>
-              <td>{{item.activity}}</td>
-              <td>{{item.email}}</td>
-              <td>{{item.value}}</td>
-              <td>{{item.createdAt}}</td>
-            </tr>
-          </tbody>
-        </table>
-  </div>
-  <div class="col">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Workout</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of workouts; let i = index">
-          <th scope="row">{{i+1}}</th>
-          <td (click)="edit(item.type,i)" *ngIf="!item.show">{{item.type}}</td><div *ngIf="item.show">
-              <div class="input-group">
-                <input type="text" class="form-control" [(ngModel)]="activity" style="width: 85%;">
-                <span class="input-group-btn">
-                  <input type="checkbox" class="form-control check" [(ngModel)]="isPrivate" *ngIf="item.show">
-                  <button class="btn btn-secondary" type="button" (click)="post(item.type,i)" style="margin-right: 10px;">Post</button>
-                  <button class="btn btn-secondary" type="button" (click)="cancel(i)">Cancel</button>
-                </span>
-              </div>
-            </div>
-        </tr>
-      </tbody>
-    </table>
-
-  </div>
+  <p style="color:cornflowerblue">You can post your daily exercise activities log here and make them visble to your friends. You can also see your friends activties by checking their profile </p>
+<hr />
 </div>
+<div class="row">
+  <div class="left">
+      <div class="card">
+              <div class="card-header"><u><b>List Of Activities Posted </b></u><hr></div>
+                  <ul class="list-group list-group-flush" *ngFor="let item of activities; let i = index">
+                  <li>
+                        You have posted new exercise activity <b>{{item.activity}}</b> : {{item.value}} at {{item.createdAt}}
+                  </li>
+              </ul>
+            </div>
+      </div>
+<div class="right">
+    <div class="card">
+        <div class="card-header"><u><b>Exercise Activities</b></u><hr></div>
+          <ul class="list-group list-group-flush" *ngFor="let item of workouts; let i = index">
+            
+              <li (click)="edit(item.type,i)" *ngIf="!item.show">{{item.type}}</li>
+              <div *ngIf="item.show">
+                <div class="input-group">
+                  <input type="text" placeholder= "Enter value in hours/km/" class="form-control" [(ngModel)]="activity" style="width: 50%;">
+                    <a>Please check box for Private posts</a>
+                    <span class="input-group-btn">
+                    <input type="checkbox" class="form-control check" [(ngModel)]="isPrivate" *ngIf="item.show">
+                    <button class="btn btn-success" type="button" (click)="post(item.type,i)" style="margin-right: 10px;">Post</button>
+                    <button class="btn btn-danger" type="button" (click)="cancel(i)">Cancel</button>
+                  </span>
+                </div>
+              </div>
+              </ul>
+            </div>
+        </div>
+    </div>
+  </div>

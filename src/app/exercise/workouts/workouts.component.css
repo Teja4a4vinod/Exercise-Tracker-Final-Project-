@@ -9,7 +9,15 @@
   border: solid;
 }
 .check{
-  height: 13px;
-  width: 13px;
-  margin-top: 14px;
+  height: 15px;
+  width: 15px;
+  margin-top: 12px;
+}
+
+.left {
+  width: 50%;
+}
+
+.right {
+  width: 50%;
 }

@@ -1,25 +1,16 @@
-<!-- <table class="table table-hover">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Email</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let friend of friends; let i = index">
-        <th scope="row">{{i+1}}</th>
-        <td>{{friend.email}}<span class="dot" *ngIf="friend.isLogin"></span></td>
-      </tr>
-    </tbody>
-  </table> -->
-
-<div class="container" style="text-center">
-  <div *ngFor="let friend of friends; let i = index">
-    <button class="btn btn-primary btn-custom" (click)="getActivities(friend,i)" data-toggle="collapse" [attr.data-target]="'#card-'+i">{{friend.username}}<span class="dot" *ngIf="friend.isLogin"></span></button>
-    <div id="{{'card-'+i}}" class="collapse btn-custom custom" [class.in]="friend.isOpen===true"  *ngIf="friend.isOpen && showHide ">
-      <div *ngFor="let activity of activities;">
-          {{activity.activity}} {{activity.value}} <i>CreatedAt</i> {{activity.createdAt}}
+<div class="container">
+  <div class="card">
+      <div class="card-body">
+          <div class="col-sm-8" *ngFor="let friend of friends; let i = index">
+              <h5 class="card-title" class= "col-sm-6"><img src="https://clipartion.com/wp-content/uploads/2015/10/smiley-face-emoticons.jpg" class="img-circle" width="20px">
+                <b>{{friend.username}}</b><span class="dot" *ngIf="friend.isLogin"></span></h5>
+              <a class="btn btn-primary" (click)="getActivities(friend,i)" data-toggle="collapse" [attr.data-target]="'#card-'+i">Profile</a>
+              <div id="{{'card-'+i}}" class="collapse btn-custom cutom" [class.in]="friend.isOpen===true"  *ngIf="friend.isOpen && showHide ">
+                  <div class="list-group" *ngFor="let activity of activities">
+                      Posted activty {{activity.activity}} : {{activity.value}} at {{activity.createdAt}}
+                  </div>
+              </div>   
+          </div>
       </div>
-    </div>
   </div>
 </div>
