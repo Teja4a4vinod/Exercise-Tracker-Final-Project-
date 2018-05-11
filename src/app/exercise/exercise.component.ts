@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Exercise, User, Workout, Notification } from '../model/exercise';
+
 
 @Component({
   selector: 'app-game',

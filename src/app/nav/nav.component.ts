@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';
+import { CustomAuthService } from '../services/custom.auth.service';
 import { HttpService } from '../services/http.service';
 import { NotificationsService } from '../services/notifications.service';
+import { MessagesComponent } from '../messages/messages.component';
 
 @Component({
   selector: 'app-nav',
@@ -12,14 +13,18 @@ import { NotificationsService } from '../services/notifications.service';
 export class NavComponent implements OnInit {
   private authToken: any;
   constructor(private router: Router, 
-    private authService: AuthService, 
-    private httpClient: HttpService,
-    private _Messages: NotificationsService) { }
+              private authService: CustomAuthService, 
+              private httpClient: HttpService,
+              private _Messages: NotificationsService,
+              private notificationsService: NotificationsService,
+              private messages: MessagesComponent
+            ) { }
 
   ngOnInit() {
     if(!this.authService.getAuth()){
       this.router.navigate(['login']);
     }
+    
   }
 
   logout(): any {
@@ -45,5 +50,13 @@ export class NavComponent implements OnInit {
     } else {
       return false;
     }
+  }
+
+  checkUser(){
+    return this.authService.getUser();
+  }
+
+  checkNotifications(){
+    return this.messages.myLength();
   }
 }

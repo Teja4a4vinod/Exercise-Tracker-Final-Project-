@@ -17,5 +17,9 @@ export class MessagesComponent implements OnInit {
   delete(i: number){
       this.Messages.Messages.splice(i, 1);
   }
+  myLength(){
+    return this.Messages.Messages.length;
+  }
+
 
 }

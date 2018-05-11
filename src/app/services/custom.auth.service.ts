@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class AuthService {
+export class CustomAuthService {
   constructor() {
 
   }
@@ -22,5 +22,14 @@ export class AuthService {
   }
   setUser(user: string) {
     localStorage.setItem('user', user);
+  }
+  getSocialUser() {
+    return localStorage.getItem('socialUser');
+  }
+  removeSocialUser() {
+    localStorage.removeItem('socialUser');
+  }
+  setSocialUser(user: string) {
+    localStorage.setItem('socialUser', user);
   }
 }

@@ -15,8 +15,7 @@ import { ExerciseComponent } from './exercise/exercise.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpService } from './services/http.service';
 import { HttpModule } from '@angular/http';
-import { AuthService } from './services/auth.service';
-import { PopoverComponent } from './popover/popover.component';
+import { CustomAuthService } from './services/custom.auth.service';
 import {ToastModule} from 'ng2-toastr/ng2-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToasterModule } from 'angular2-toaster/src/toaster.module';
@@ -34,7 +33,6 @@ import { NotificationsService } from './services/notifications.service';
     LoginComponent,
     NotificationsComponent,
     ExerciseComponent,
-    PopoverComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +51,7 @@ import { NotificationsService } from './services/notifications.service';
       { path: '', redirectTo: '/home', pathMatch: 'full' }
     ])
   ],
-  providers: [HttpService, AuthService, NotificationsService],
+  providers: [HttpService, CustomAuthService, NotificationsService, MessagesComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

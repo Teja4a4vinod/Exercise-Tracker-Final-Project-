@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../services/http.service';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+import { CustomAuthService } from '../../services/custom.auth.service';
 import { NotificationsService } from '../../services/notifications.service';
 
 @Component({
@@ -17,7 +17,7 @@ export class FriendsComponent implements OnInit {
 
   constructor(private httpClient: HttpService, 
               private router: Router, 
-              private authService: AuthService,
+              private authService: CustomAuthService,
               private _Messages: NotificationsService) { }
 
   ngOnInit() {
