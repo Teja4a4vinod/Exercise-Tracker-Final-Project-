@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
         if (data.status) {
           this._auth.setAuth();
           this._auth.setUser(form.value.email);
-          this.router.navigate(['friends']);
+          this.router.navigate(['home']);
           this._Messages.Messages.push({ Text: form.value.email + ' is now logged into the application', Type: 'success' })
         }
       }, err => console.log(err));

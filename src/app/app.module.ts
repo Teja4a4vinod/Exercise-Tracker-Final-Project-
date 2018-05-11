@@ -16,9 +16,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpService } from './services/http.service';
 import { HttpModule } from '@angular/http';
 import { CustomAuthService } from './services/custom.auth.service';
-import {ToastModule} from 'ng2-toastr/ng2-toastr';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToasterModule } from 'angular2-toaster/src/toaster.module';
 import { NotificationsService } from './services/notifications.service';
 
 @NgModule({
@@ -39,8 +36,6 @@ import { NotificationsService } from './services/notifications.service';
     ReactiveFormsModule,
     FormsModule,
     HttpModule,
-    BrowserAnimationsModule,
-    ToasterModule.forRoot(),
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
       { path: 'workouts', component: WorkoutsComponent },

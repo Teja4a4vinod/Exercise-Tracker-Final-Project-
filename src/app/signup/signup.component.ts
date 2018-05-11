@@ -3,7 +3,6 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { HttpService } from '../services/http.service';
 import { Router } from '@angular/router';
 import { CustomAuthService } from '../services/custom.auth.service';
-import { ToasterModule, ToasterService, ToasterConfig } from 'angular2-toaster';
 import { NotificationsService } from '../services/notifications.service';
 
 declare var googleyolo: any;
@@ -17,18 +16,13 @@ declare var window: any;
 })
 export class SignupComponent implements OnInit {
   private signupForm: FormGroup;
-  public config1: ToasterConfig = new ToasterConfig({
-    positionClass: 'toast-top-right',
-    animation: 'fade'
-  });
 
-  constructor(private toasterService: ToasterService, 
+  constructor(
               private httpClient: HttpService, 
               private router: Router, 
               private _auth: CustomAuthService,
         
             private _Messages: NotificationsService) {
-    this.toasterService = toasterService;
     this.signupForm = new FormGroup({
       email: new FormControl(),
       username: new FormControl(),
@@ -103,6 +97,7 @@ googleSignup(){
         .subscribe(data => {
           if (data.status) {
             this.router.navigate(['login']);
+            this._Messages.Messages.push({ Text:'WELCOME to Exercise Tracker Application ' +reqObj.body.username, Type: 'success'})
             
           }
         });
