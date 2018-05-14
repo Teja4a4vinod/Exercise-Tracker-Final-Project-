@@ -6,8 +6,8 @@
     <ul class="nav navbar-nav" *ngIf="checkAuth()">
       <li class="nav-item"><a class="nav-link" routerLink="/home" routerLinkActive="active" >Home <span class="sr-only">(current)</span></a></li>
       <li class="nav-item"><a class="nav-link" routerLink="/workouts" routerLinkActive="active" >Workouts</a> </li>
-      <li class="nav-item"><a class="nav-link" routerLink="/friends" routerLinkActive="active" >Friends</a></li>
-      <li class="nav-item"><a class="nav-link" routerLink="/notifications" routerLinkActive="active" >Notifications( {{checkNotifications()}} )</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/friends" routerLinkActive="active" >Members </a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/notifications" routerLinkActive="active" >Notifications ({{checkNotifications()}})</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a class="nav-link" routerLink="/signup" routerLinkActive="active" *ngIf="!checkAuth()"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
