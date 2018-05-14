@@ -4,7 +4,7 @@ const moment = require('moment');
 
 class Workouts {
   constructor() {
-    this.Workouts = [{ type: 'Running' }, { type: 'Jogging' }, { type: 'Pushups' },{type: 'Walking'},{type: 'Swimming'},{type: 'Jumping'},{type: 'Skipping'}];
+    this.Workouts = [{ type: 'Running' }, { type: 'Jogging' }, { type: 'Pushups' },{type: 'Walking'},{type: 'Swimming'},{type: 'Jumping'},{type: 'Skipping'},{type: 'Step-Ups'},{type: 'Jump Squats'},{type: 'Jumba'},{type: 'Badminton'}];
     this.actitivities = [];
   }
   FetchAllWorkouts() {

@@ -7,7 +7,7 @@
   <div class="left">
       <div class="card">
               <div class="card-header"><u><b>List Of Activities Posted </b></u><hr></div>
-                  <ul class="list-group list-group-flush" *ngFor="let item of activities; let i = index">
+                  <ul class="list-group-item list-group-item-success" *ngFor="let item of activities; let i = index">
                   <li>
                         You have posted new exercise activity <b>{{item.activity}}</b> : {{item.value}} at {{item.createdAt}}
                   </li>
@@ -17,12 +17,12 @@
 <div class="right">
     <div class="card">
         <div class="card-header"><u><b>Exercise Activities</b></u><hr></div>
-          <ul class="list-group list-group-flush" *ngFor="let item of workouts; let i = index">
+          <ul class="list-group-item list-group-item-info" *ngFor="let item of workouts; let i = index">
             
               <li (click)="edit(item.type,i)" *ngIf="!item.show">{{item.type}}</li>
               <div *ngIf="item.show">
                 <div class="input-group">
-                  <input type="text" placeholder= "Enter value in hours/km/" class="form-control" [(ngModel)]="activity" style="width: 50%;">
+                  <input type="text" placeholder= "Enter value(Ex:2 KM,etc)" class="form-control" [(ngModel)]="activity" style="width: 45%;">
                     <a>Please check box for Private posts</a>
                     <span class="input-group-btn">
                     <input type="checkbox" class="form-control check" [(ngModel)]="isPrivate" *ngIf="item.show">

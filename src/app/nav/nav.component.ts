@@ -32,7 +32,7 @@ export class NavComponent implements OnInit {
       body: { email: this.authService.getUser() },
       uri: '/logout',
     };
-    this._Messages.Messages.push({ Text: this.authService.getUser() +' is now logged out from the application' , Type: 'success'})
+    this._Messages.Messages.push({ Text: this.authService.getUser() +' is now logged out from the application' , Type: 'danger'})
     this.httpClient.post(reqObj)
       .subscribe(data => {
         if (data.status) {

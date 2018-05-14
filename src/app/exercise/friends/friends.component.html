@@ -1,13 +1,18 @@
 <div class="container">
+    <div class="row">
+      <p style="color:cornflowerblue">Here are the list of people who are using this application to post thier activities. you can check their profile to see what are the activities they posted.</p>
+    <hr />
+
+<div class="container">
   <div class="card">
       <div class="card-body">
-          <div class="col-sm-8" *ngFor="let friend of friends; let i = index">
+          <div class="col-sm-10" *ngFor="let friend of friends; let i = index">
               <h5 class="card-title" class= "col-sm-6"><img src="https://clipartion.com/wp-content/uploads/2015/10/smiley-face-emoticons.jpg" class="img-circle" width="20px">
                 <b>{{friend.username}}</b><span class="dot" *ngIf="friend.isLogin"></span></h5>
               <a class="btn btn-primary" (click)="getActivities(friend,i)" data-toggle="collapse" [attr.data-target]="'#card-'+i">Profile</a>
               <div id="{{'card-'+i}}" class="collapse btn-custom cutom" [class.in]="friend.isOpen===true"  *ngIf="friend.isOpen && showHide ">
-                  <div class="list-group" *ngFor="let activity of activities">
-                      Posted activty {{activity.activity}} : {{activity.value}} at {{activity.createdAt}}
+                  <div class="list-group-item list-group-item-success" *ngFor="let activity of activities">
+                    Posted activty {{activity.activity}} : {{activity.value}} at {{activity.createdAt}}
                   </div>
               </div>   
           </div>
