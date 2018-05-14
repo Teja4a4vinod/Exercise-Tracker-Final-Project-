@@ -89,6 +89,27 @@ class Friends {
       });
     });
   }
+
+  getsearch(req){
+    search = (text$: Observable<string>) =>
+    text$.pipe(
+      debounceTime(300),
+      distinctUntilChanged(),
+      tap(() => this.searching = true),
+      switchMap(term =>
+        this._service.search(term).pipe(
+          tap(() => this.searchFailed = false),
+          catchError(() => {
+            this.searchFailed = true;
+            return of([]);
+          }))
+      ),
+      tap(() => this.searching = false),
+      merge(this.hideSearchingWhenUnsubscribed)
+    );
+  }
+
+  
 }
 
 module.exports = new Friends();

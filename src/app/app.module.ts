@@ -17,6 +17,9 @@ import { HttpService } from './services/http.service';
 import { HttpModule } from '@angular/http';
 import { CustomAuthService } from './services/custom.auth.service';
 import { NotificationsService } from './services/notifications.service';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { TypeheadComponent } from './typehead/typehead.component';
+import { FilterPipe} from './filter.pipe';
 
 @NgModule({
   declarations: [
@@ -30,12 +33,14 @@ import { NotificationsService } from './services/notifications.service';
     LoginComponent,
     NotificationsComponent,
     ExerciseComponent,
+    TypeheadComponent,
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
     HttpModule,
+    NgbModule.forRoot(),
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
       { path: 'workouts', component: WorkoutsComponent },
@@ -46,7 +51,7 @@ import { NotificationsService } from './services/notifications.service';
       { path: '', redirectTo: '/home', pathMatch: 'full' }
     ])
   ],
-  providers: [HttpService, CustomAuthService, NotificationsService, MessagesComponent],
+  providers: [HttpService, CustomAuthService, NotificationsService, MessagesComponent,FilterPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
