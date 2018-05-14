@@ -28,6 +28,7 @@ router.post('/register', (req, res, next) => {
 
 router.get('/workouts', (req, res, next) => res.status(200).send(workouts.FetchAllWorkouts(req)));
 router.get('/activities', (req, res, next) => res.status(200).send(workouts.FetchAllActivities(req)));
+router.get('/friends'), (req, res, next) => res.status(200).send(friends.getSearch(req)));
 
 router.post('/activity', (req, res, next) => {
   if (Object.keys(req.body).length === 0)
